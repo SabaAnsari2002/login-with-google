@@ -11,7 +11,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -33,10 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        // Check if the user is already signed in
         val account = GoogleSignIn.getLastSignedInAccount(this)
         if (account != null) {
-            // If user is already signed in, go to HomeActivity
             goToHomeActivity(account)
         }
 
@@ -50,7 +47,6 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -74,6 +70,8 @@ class MainActivity : AppCompatActivity() {
     private fun goToHomeActivity(account: GoogleSignInAccount) {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("USER_NAME", account.displayName)
+        intent.putExtra("USER_EMAIL", account.email)
+        intent.putExtra("USER_PHOTO", account.photoUrl.toString())
         startActivity(intent)
         finish()
     }

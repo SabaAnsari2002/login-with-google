@@ -1,62 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white"
-    android:padding="16dp">
+    android:background="@color/background_color"
+    android:padding="24dp">
 
-    <!-- TextView for Welcome message -->
+    <!-- پروفایل کاربر -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_card"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="60dp">
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- خوش‌آمدگویی -->
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/profile_card"
         android:layout_centerHorizontal="true"
-        android:textSize="28sp"
-        android:textColor="@android:color/holo_blue_dark"
-        android:text="Welcome, User!"
-        android:gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:textColor="@color/primary_text_color"
         android:textStyle="bold" />
 
-    <!-- Button for Sign-out -->
-    <Button
-        android:id="@+id/btn_google_sign_out_main"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Sign out"
-        android:textSize="16sp"
-        android:textColor="@android:color/white"
-        android:padding="12dp"
+    <!-- ایمیل کاربر -->
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tv_welcome"
-        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:elevation="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:textColor="@color/secondary_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp" />
 
-    <!-- Optional: Shadow effect for the Button -->
+    <!-- دکمه خروج -->
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_email"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_welcome"
-        android:layout_marginTop="30dp"
-        android:elevation="8dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:cardCornerRadius="12dp">
+        android:layout_marginTop="40dp"
+        app:cardElevation="12dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="@color/button_color">
 
         <Button
             android:id="@+id/btn_google_sign_out_card"
-            android:layout_width="250dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
-            android:text="Sign out"
+            android:background="@android:color/transparent"
+            android:text="Sign Out"
             android:textSize="16sp"
             android:textColor="@android:color/white"
-            android:padding="12dp"/>
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
